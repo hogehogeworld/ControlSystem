@@ -117,7 +117,7 @@ ControlSystem
       早期に自体を把握できる
 
 
-<strong>勉強会02<a href="www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a></strong>
+<strong>勉強会02<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a></strong>
 
     def goals:
       1.サイバーセキュリティと制御システムがどのような関係にあるかにおいて
