@@ -2,7 +2,6 @@ ControlSystem
 =============
 <b> 第1部 - 制御システムについて</b>
 
-
   1 - インシデント
 
     ・47%が意図的なマルウェアの攻撃
@@ -11,7 +10,7 @@ ControlSystem
   
   2 - Stuxnetの概要
 
-  class Stuxnet:
+    class Stuxnet:
  
     def attacked():
         while:
@@ -179,78 +178,160 @@ ControlSystem
         | DCS           | DCS – Distributed Control System
         | ______________|
 
-        def Sensors and Field Devices:
-          1.Discrete Sensors
-            - 開けるか閉じるかで状態を指摘する.
-              High-スイッチ/Low-スイッチ
-          2.Analog Sensors
-            -  Convert continuous parameters such as 
-                temperature or flow to analog signals such as 4-20mA or 0-10V
-            - (直訳:
-               気温や並のような連続したパラメータを4-20mA/0-10vのような
-               アナログなシグナルに変換する
-            -  To get field information into the control system, 
-                the electric signals must be digitized. 
-               This is done using equipment such as RTUs, PLCs, IEDs
-            -  (直訳:
-               現場の情報を制御システムに変換するには、
-                電気信号をデジタル化する必要がある.
-               これをするには、RTUs/PLCs/IEDsのような装置を使う.
+      def Sensors and Field Devices:
+        1.Discrete Sensors
+          - 開けるか閉じるかで状態を指摘する.
+            High-スイッチ/Low-スイッチ
+        2.Analog Sensors
+          -  Convert continuous parameters such as 
+              temperature or flow to analog signals such as 4-20mA or 0-10V
+          - (直訳:
+              気温や並のような連続したパラメータを4-20mA/0-10vのような
+              アナログなシグナルに変換する
+          -  To get field information into the control system, 
+              the electric signals must be digitized. 
+              This is done using equipment such as RTUs, PLCs, IEDs
+          -  (直訳:
+              現場の情報を制御システムに変換するには、
+              電気信号をデジタル化する必要がある.
+              これをするには、RTUs/PLCs/IEDsのような装置を使う.
 
-        def The RTU(遠隔端末ユニット):
-          - アナログ/個々の図りをデジタル情報に変換する
-          - Contain analog and discrete inputs
-            (直訳: アナログ/個々の入力を含んでいる)
-          - 多数の通信オプションとデータプロトコルがある;w
-  
-          Also used for:
-            - データの集中
-            - プロトコルの通信
+      def The RTU(遠隔端末ユニット):
+        - アナログ/個々の図りをデジタル情報に変換する
+        - Contain analog and discrete inputs
+          (直訳: アナログ/個々の入力を含んでいる)
+        - 多数の通信オプションとデータプロトコルがある;w
 
-        def The IED(高性能な電子デバイス)
+        Also used for:
+          - データの集中
+          - プロトコルの通信
+
+      def The IED(高性能な電子デバイス)
+        
+        - 近代のマイクロプロセッサが搭載されたコントローラ
+
+        - 内蔵されてるもの
+          -I/O
+            ひとつのIEDで数百個~数千個のデータポイントを持つことができる
+            (What is Data Points?)
+          -通信
+            IEDはしばしばEthternetベースのプロトコルで通信する
+            あまり必要としないらしいが
+        - Other Features
+          - 論理式が組み込まれてる
+          - ユーザがデータマップ通信の設定が変更可能
+            (Wthat is Data map?)
+          - Pointでイベントは正確に記憶できる
+          - コンフィグは遠隔で設定できる
+      
+      def The PLC:
+        
+        PLCsは中断機の代わり.
+        リレー回路の代替装置として開発された制御装置である。 
+        シーケンスとも呼ばれている
+        リレー回路の代替装置として開発された制御装置である。
+        工場などの自動機械の制御に使われるほか、
+        エレベーター・自動ドア・ボイラー・テーマパーク
+        の各種アトラクションなど、身近な機械の制御にも使用されている。
+
+        最近のPLCは次のようなことにも使われる.
+
+        1.ネットワーク
+        2.遠隔でプログラム
+        3.組み込みのPCによりマージできるようにする
+        4.{I/O , Web , FTP , SNMP}サーバができる
+        5.ユニバーサルプログラミング
+        (What is Universal Programming)
+        6.ほとんどのPLCは最小限のセキュリティが備わっている
+
+
+      def THE HMI
+
+        人間と機械が情報をやり取りするための手段や、
+        そのための装置やソフトウェアなどの総称。
+        コンピュータにおけるHMIは特にユーザインターフェース
+        (UI：User Interface)と呼ばれることが多い。
+
+        1.コントロール,モニタリング,アラームするために使われる
+        2.Can be software systems on a PC or 
+          standalone systems like touch panels, 
+          handheld devices, or panel-mounted displays
+        3.(PLCs, IEDs,.etc)のようなデバイスやディスプレイからデータを集める.
+          それをデータベースにデータを送る.
+
+      def DCS
+
+        1.分散制御システムは中央制御パネルを持っており、
+          他の制御システムの集まりも含める.
+        2.一般的には、石油、ガス、化学、水、汚染水を見つけるシステム
+        3.進歩したプロセス制御.
+
+        4.物理的マシンはPLCと似ている.
+          – Rack and slot convention
+          – Redundant processors on UPS backup power 
+          – Built for real-time control
+
+        5.通信
+          – Proprietary backbone protocols
+          – Communications with other systems primarily for ALARMING
+
+        6.信頼性
+          - DCSに対する信頼性は99%以上.
+          - Industrial hardened equipment
+            (直訳: 工業的図地金入り設備
+
+      WHAT THE DIFFERENT SCADA WITH DCS!?
+
+        – The key word in SCADA is “Supervisory.” This indicates that 
+          decisions are not directly made by the system. Instead, the 
+          system executes control decisions based on control parameters 
+          by operators or management. SCADA systems are typically 
+          deployed across large geographical areas (eg. - electric grid)
+        
+        - 重要になってくるのは,SCADAは監視用だということ.
+          この表現はシステムに寄って直接決まっているわけではない.
+          そうではなく,システムはオペレータかマネジメントによって
+            制御パラメータを基に制御の決定を実行する.
+          SCADAシステムは元々広範囲で活用/配備されている.
+
+        
+        – DCS provides real-time monitoring and control of a given process 
+          within a plant. All major components of the system are usually 
+          confined to one or several close by facilities (eg. - refinery)
+        
+        - DCSは実時間のモニタリングと大型機械の内部で与えられたプロセスの
+            制御を提供する(??)
+          システムのすべての主要な要素はたいてい、
+            ひとつか数個の設備によって限られている.(???)
+
+        – As technology advances, the terms are getting blurry. You will 
+          quite often hear policy makers refer to “SCADA” when they are 
+          really referring to another type of Industrial Control System.
+
+        - 技術が進歩するとき、専門用語というものは曖昧になってくる.
+          かなり頻繁にSCADAを参照する、他のICSをを言いたいとき(???)
+
+      def Dedicated Lines:
+
+        • More secure than leased lines
           
-          - 近代のマイクロプロセッサが搭載されたコントローラ
+          - leased linesより安全.
 
-          - 内蔵されてるもの
-            -I/O
-              ひとつのIEDで数百個~数千個のデータポイントを持つことができる
-              (What is Data Points?)
-            -通信
-              IEDはしばしばEthternetベースのプロトコルで通信する
-              あまり必要としないらしいが
-          - Other Features
-            - 論理式が組み込まれてる
-            - ユーザがデータマップ通信の設定が変更可能
-              (Wthat is Data map?)
-            - Pointでイベントは正確に記憶できる
-            - コンフィグは遠隔で設定できる
-       
-        def The PLC:
+        • High installation costs
+
+          - 取り付けにコストがかかる.
+
+        • Lower recurring costs
           
-          PLCsは中断機の代わり.
-          リレー回路の代替装置として開発された制御装置である。 
-          シーケンスとも呼ばれている
-          リレー回路の代替装置として開発された制御装置である。
-          工場などの自動機械の制御に使われるほか、
-          エレベーター・自動ドア・ボイラー・テーマパーク
-          の各種アトラクションなど、身近な機械の制御にも使用されている。
+          - 安く繰り返し使える.
 
-          最近のPLCは次のようなことにも使われる.
+        • Lines aren’t governed by a third party
 
-          1.ネットワーク
-          2.遠隔でプログラム
-          3.組み込みのPCによりマージできるようにする
-          4.{I/O , Web , FTP , SNMP}サーバができる
-          5.ユニバーサルプログラミング
-          (What is Universal Programming)
-          6.ほとんどのPLCは最小限のセキュリティが備わっている
+          - Linesは3rd Partyによってうんようされてない
+
+        • Primary installations
+        – May be Isolated systems – Serial communications
+
+      def Power Line Communications:
 
 
-        def THE HMI
-
-          人間と機械が情報をやり取りするための手段や、
-          そのための装置やソフトウェアなどの総称。
-          コンピュータにおけるHMIは特にユーザインターフェース
-          (UI：User Interface)と呼ばれることが多い。
-
-          1.コントロール,モニタリング,アラームするために使われる
