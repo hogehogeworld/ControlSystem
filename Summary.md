@@ -116,8 +116,9 @@
       直接SCADAに膨大なデータを送るのではなく、分析データを投げることで、
       早期に自体を把握できる
 
-勉強会02<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a>
+<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">Control System Cyber Security Training</a>
 ======
+
 
   <b>goals</b>
 ---------
