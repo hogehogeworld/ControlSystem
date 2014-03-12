@@ -2,31 +2,32 @@ ControlSystem
 =============
 <b> 第1部 - 制御システムについて</b>
 
-  1 - インシデント
-
+  <b>1 - インシデント</b>
+    
     ・47%が意図的なマルウェアの攻撃
     ・SCADAや産業制御システムのウィルス感染は減っているものの、
        攻撃の巧妙化・ステルス化が進み検知が難しくなっている
   
-  2 - Stuxnetの概要
+---------
+  <b>2 - Stuxnetの概要</b>
 
     class Stuxnet:
- 
-    def attacked():
-        while:
-          1.USBメモリやインターネットを通じて情報システムへの侵入
-          2.システムの脆弱性を利用し、権限昇格、システム環境内部でウィルスの拡散実行
-          3.バックドアを作成し、外部指令サーバ(C&Cサーバ）や80番ポート(HTTP)を
-            介し通信し、ウィルスの増強化
-        4.組織内のネットワークに入り、制御システムへの侵入
-        5.制御システム上にある装置に対する攻撃実行
+  
+      def attacked():
+          while:
+            1.USBメモリやインターネットを通じて情報システムへの侵入
+            2.システムの脆弱性を利用し、権限昇格、システム環境内部でウィルスの拡散実行
+            3.バックドアを作成し、外部指令サーバ(C&Cサーバ）や80番ポート(HTTP)を
+              介し通信し、ウィルスの増強化
+          4.組織内のネットワークに入り、制御システムへの侵入
+          5.制御システム上にある装置に対する攻撃実行
 
-      def Func_of_Stuxnet():
-        1. 500 KBのプログラムで4000弱の機能を持っている
-        2. 複雑/オブジェクト指向
-        3. 複数のゼロデイを利用
-        4. 2つのrootkitを使用し、制御システムをターゲットとしている
-        5. Windowsに詳しい、制御システムであるWinCC/Step7についても詳しい
+        def Func_of_Stuxnet():
+          1. 500 KBのプログラムで4000弱の機能を持っている
+          2. 複雑/オブジェクト指向
+          3. 複数のゼロデイを利用
+          4. 2つのrootkitを使用し、制御システムをターゲットとしている
+          5. Windowsに詳しい、制御システムであるWinCC/Step7についても詳しい
 
     2 - Stuxnetが出た後の背景
 
@@ -51,7 +52,8 @@ ControlSystem
         ・外部との通信における接続先のフィルタリング 
         ・外部との接続点における通信の監視、制御機構
 
-  3 - SCADA
+---------
+  <b>3 - SCADA</b>
 
       2010 ~ 2016年で 46億ドル ~ 70億ドルにまでSCADA市場が成長する見込み。
       ゆえに、サイバセキュリティを強くする必要がある
@@ -78,7 +80,8 @@ ControlSystem
           • Keeping Access
           • Covering the Tracks
 
-  4 - 制御システムの認証
+---------
+  <b>4 - 制御システムの認証</b>
 
       認証-
         1.セキュリティ製品を開発してるベンダのプロセスを評価
@@ -115,12 +118,14 @@ ControlSystem
       直接SCADAに膨大なデータを送るのではなく、分析データを投げることで、
       早期に自体を把握できる
 
+---------
 
 <strong>勉強会02<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a></strong>
 
-    def goals:
+  <b>goals:</b>
+      
       1.サイバーセキュリティと制御システムがどのような関係にあるかにおいて
-      重要な論点を理解すること
+          重要な論点を理解すること
       2.次のようなメソッドを学ぶ
         - 制御システムの環境で脆弱性発見/解析
           1.ネットワークデザイン
@@ -130,8 +135,9 @@ ControlSystem
           4.アプリケーション
         - Apply contemporary security mitigation strategies to control systems
           (直訳:現代セキュリティミティゲーションを制御システムへ適応)
-
-    def agenda:
+------
+  <b>agenda:</b>
+      
       1. SCADA&Controls system overview
       2. Risk to Control systems
       3. exploit Demo
@@ -139,7 +145,8 @@ ControlSystem
       5. SCADA Security "Chalk Talk"
       6. Defence,Detection,and Analysis
 
-    def SCADA&Controls system overview
+------
+  <b>SCADA&Controls system overview</b>
           
           I/O
         |---------------|
@@ -178,7 +185,10 @@ ControlSystem
         | DCS           | DCS – Distributed Control System
         | ______________|
 
-      def Sensors and Field Devices:
+------
+
+  <b>Sensors and Field Devices:</b>
+        
         1.Discrete Sensors
           - 開けるか閉じるかで状態を指摘する.
             High-スイッチ/Low-スイッチ
@@ -196,7 +206,10 @@ ControlSystem
               電気信号をデジタル化する必要がある.
               これをするには、RTUs/PLCs/IEDsのような装置を使う.
 
-      def The RTU(遠隔端末ユニット):
+------
+
+  <b>The RTU(遠隔端末ユニット):</b>
+        
         - アナログ/個々の図りをデジタル情報に変換する
         - Contain analog and discrete inputs
           (直訳: アナログ/個々の入力を含んでいる)
@@ -206,7 +219,9 @@ ControlSystem
           - データの集中
           - プロトコルの通信
 
-      def The IED(高性能な電子デバイス)
+------
+
+  <b>The IED(高性能な電子デバイス):</b>
         
         - 近代のマイクロプロセッサが搭載されたコントローラ
 
@@ -224,7 +239,9 @@ ControlSystem
           - Pointでイベントは正確に記憶できる
           - コンフィグは遠隔で設定できる
       
-      def The PLC:
+------
+
+  <b>The PLC:</b>
         
         PLCsは中断機の代わり.
         リレー回路の代替装置として開発された制御装置である。 
@@ -244,13 +261,24 @@ ControlSystem
         (What is Universal Programming)
         6.ほとんどのPLCは最小限のセキュリティが備わっている
 
+------
 
-      def THE HMI
+  <b>THE HMI:</b>
 
         人間と機械が情報をやり取りするための手段や、
         そのための装置やソフトウェアなどの総称。
         コンピュータにおけるHMIは特にユーザインターフェース
         (UI：User Interface)と呼ばれることが多い。
+
+        人間オペレータにプロセスのデータを提示する機構であり、
+        人間オペレータがプロセスを制御する際にもそれを経由する.
+        HMIはSCADANoデータベースやソフトウェアプログラムとリンクしており,
+        傾向をみるためのデータ、診断データ、保守手続きの予定などの管理情報
+        ロジスティック情報、特定のセンサや機械の詳細図、
+        エキスパートシステムによるトラブルシューティングなどが提供されてる
+
+
+
 
         1.コントロール,モニタリング,アラームするために使われる
         2.Can be software systems on a PC or 
@@ -259,7 +287,9 @@ ControlSystem
         3.(PLCs, IEDs,.etc)のようなデバイスやディスプレイからデータを集める.
           それをデータベースにデータを送る.
 
-      def DCS
+------
+
+  <b>DCS:</b>
 
         1.分散制御システムは中央制御パネルを持っており、
           他の制御システムの集まりも含める.
@@ -280,7 +310,23 @@ ControlSystem
           - Industrial hardened equipment
             (直訳: 工業的図地金入り設備
 
-      WHAT THE DIFFERENT SCADA WITH DCS!?
+------
+
+  <b>SCADA</b>
+        
+        1.産業制御システムの１つ。
+        2.コンピュータによるシステム監視/プロセス制御が可能
+        3.対象のプロセスは
+          -製造
+          -生産
+          -発電
+          -組み立て
+        などを含む工業プロセスであり、連続モード/バッチ・モード/
+        反復モード/離散モードなどがある
+
+  
+------
+  <b>WHAT THE DIFFERENT SCADA WITH DCS!?</b>
 
         – The key word in SCADA is “Supervisory.” This indicates that 
           decisions are not directly made by the system. Instead, the 
@@ -311,7 +357,27 @@ ControlSystem
         - 技術が進歩するとき、専門用語というものは曖昧になってくる.
           かなり頻繁にSCADAを参照する、他のICSをを言いたいとき(???)
 
-      def Dedicated Lines:
+
+        SCADAとDCSを混同する人が多いが、
+        SCADAはプロセスの調整はするが、リアルタイムでの制御はしない
+        実時間制御という話は、新たな通信技術によって高信頼な
+        低レイテンシで高速な通信が広域で可能になるにつれて、焦点がぼやける
+
+        1つのサイト全体や地理的に分散したシステムを集中的に関し制御する.
+        遠方監視制御装置(RTU)やPLCが自動的に行う
+        ホストのの制御機能は監督的な介入や優先的に限られることが多い.
+        (ex.)
+          PLCが冷却水の流量を制御する場合、
+          SCADAはオペレータがりゅう料の設定値を変更したり
+          警報発生条件(不正な流量や高温)を変更できるようにしたり、
+          現在の状態をオペレータに対して表示し記憶する
+          フィードバック制御ループはRTU/PLCで完璧.
+          SCADAはそれらループの状態を監視する
+
+
+-------
+
+  <b>Dedicated Lines:</b>
 
         • More secure than leased lines
           
@@ -332,6 +398,142 @@ ControlSystem
         • Primary installations
         – May be Isolated systems – Serial communications
 
-      def Power Line Communications:
+------
+
+  <b>Power Line Communications:</b>
+
+        – Superimposed analog signal over a 50 or 60 Hz AC 
+          system – Used in the electrical sector for command and control
+       
+        – Low data throughput (slow)
+          Broadband over Power Line
+        
+        – Common ‘Last Mile’ solution – Regionally installed
+        
+        – Not used in rural settings
+
+-------
+
+  <b>Wired Media - Copper / Fiber</b>
+
+        - IP/Ethernetとシリアルアプリの両方を使用
+
+        - 大量の共有デバイス
+
+        - セキュリティオプションが多い
+
+        - 用意に情報を調べれる
+  
+-------
+
+  <b>Wireless: Radios and WiFi</b>
+
+        -Radio-
+
+          1.一般的に使われている
+          2.Spread spectrum or narrow band (???)
+          3.ほとんどの工業につかわれる 
+          4.低コストで簡単にインストールできる
+          5.56kbのスピード
+
+        -IEEE 802.11(WiFi)-
+
+          1.極度に使われる
+          2.チープ
+          3.多数の認証技術が使われている
+          4.多数の暗号技術が使われている
+
+-------
+
+  <b>Wireless</b>
+      
+        Microwave
+          
+          1.パイプライン制御システムや遠隔電気操作する場合に使う
+          2.Large bandwidth compared to copper
+            (???)
+          3.Line of site limitations
+            (直訳: サイト限界の線
+          4.取り付けにコストが掛かる
+
+        Cellular
+
+          1.存在する携帯電話用のネットワークを使う
+          2.携帯を送信機のように生成している
+
+-------
+
+  <b>Protocols & CRT試験</b>
+
+        試験対象のプロトコル
+
+        1.Group 1~5まであって、 Group 1はEDSA 401~406で規定されている
+        2.Group 2~5は、今後 ISASecure EDSA認証プログラムで用意されていく
+        
+        Group 1:
+        |-----------------|
+        |  IEEE 802.3     |
+        |  (Ethernet)     |
+        |  ARP            |
+        |  IPv4           |
+        |  ICMPv4         |
+        |  TCP            |
+        |  UDP            |
+        |_________________|
+
+
+        Group 2:
+        |-----------------|
+        |  BOOTP          |
+        |  DHCP           |
+        |  DNS            |
+        |  NTP,SNTP       |
+        |  FTP,TFTP       |
+        |  HTTP           |
+        |  SNMPv1-2       |
+        |  Telnet         |
+        |_________________|
+
+
+        Group 3:
+        |-----------------|
+        |  HTTPS          |
+        |  TLS            |
+        |  Modbus/TCP     |
+        |_________________|
+
+
+        Group 4:
+        |-----------------|
+        |  IPv6           |
+        |  OPC            |
+        |  Ethernet/IP/CIP|
+        |  PROFINET       |
+        |  FFHSE4         |
+        |  Selected       |
+        |  wireless       |
+        |  protocols/     |
+        |        stacks   |
+        |  with elements  |
+        |  such as:       |
+        |    -IEEE 802.11 |
+        |    -ISA100.11a  |
+        |    -WirelessHART|
+        |_________________|
+
+
+        Group 5:
+        |-----------------|
+        |  SNMPv3         |
+        |  SSH            |
+        |  Server         |
+        |  OPC-UA         |
+        |  MMS            |
+        |  IEC            |
+        |  61850          |
+        |  SMTP           |
+        |_________________|
+
+
 
 
