@@ -116,9 +116,8 @@
       直接SCADAに膨大なデータを送るのではなく、分析データを投げることで、
       早期に自体を把握できる
 
-<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">Control System Cyber Security Training</a>
+勉強会02<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a>
 ======
-
 
   <b>goals</b>
 ---------
@@ -465,68 +464,68 @@
         2.Group 2~5は、今後 ISASecure EDSA認証プログラムで用意されていく
         
         Group 1:
-        |-----------------|
-        |  IEEE 802.3     |
-        |  (Ethernet)     |
-        |  ARP            |
-        |  IPv4           |
-        |  ICMPv4         |
-        |  TCP            |
-        |  UDP            |
-        |_________________|
+        |-------------------------|
+        |  IEEE 802.3             |
+        |  (Ethernet)             |
+        |  ARP                    |
+        |  IPv4                   |
+        |  ICMPv4                 |
+        |  TCP                    |
+        |  UDP                    |
+        |_________________________|
 
 
         Group 2:
-        |-----------------|
-        |  BOOTP          |
-        |  DHCP           |
-        |  DNS            |
-        |  NTP,SNTP       |
-        |  FTP,TFTP       |
-        |  HTTP           |
-        |  SNMPv1-2       |
-        |  Telnet         |
-        |_________________|
+        |-------------------------|
+        |  BOOTP                  |
+        |  DHCP                   |
+        |  DNS                    |
+        |  NTP,SNTP               |
+        |  FTP,TFTP               |
+        |  HTTP                   |
+        |  SNMPv1-2               |
+        |  Telnet                 |
+        |_________________________|
 
 
         Group 3:
-        |-----------------|
-        |  HTTPS          |
-        |  TLS            |
-        |  Modbus/TCP     |
-        |_________________|
+        |-------------------------|
+        |  HTTPS                  |
+        |  TLS                    |
+        |  Modbus/TCP             |
+        |_________________________|
 
 
         Group 4:
-        |-----------------|
-        |  IPv6           |
-        |  OPC            |
-        |  Ethernet/IP/CIP|
-        |  PROFINET       |
-        |  FFHSE4         |
-        |  Selected       |
-        |  wireless       |
-        |  protocols/     |
-        |        stacks   |
-        |  with elements  |
-        |  such as:       |
-        |    -IEEE 802.11 |
-        |    -ISA100.11a  |
-        |    -WirelessHART|
-        |_________________|
+        |-------------------------|
+        |  IPv6                   |
+        |  OPC                    |
+        |  Ethernet/IP/CIP        |
+        |  PROFINET               |
+        |  FFHSE4                 |
+        |  Selected               |
+        |  wireless               |
+        |  protocols/             |
+        |        stacks           |
+        |  with elements          |
+        |  such as:               |
+        |    -IEEE 802.11         |
+        |    -ISA100.11a          |
+        |    -WirelessHART        |
+        |_________________________|
 
 
         Group 5:
-        |-----------------|
-        |  SNMPv3         |
-        |  SSH            |
-        |  Server         |
-        |  OPC-UA         |
-        |  MMS            |
-        |  IEC            |
-        |  61850          |
-        |  SMTP           |
-        |_________________|
+        |-------------------------|
+        |  SNMPv3                 |
+        |  SSH                    |
+        |  Server                 |
+        |  OPC-UA                 |
+        |  MMS                    |
+        |  IEC                    |
+        |  61850                  |
+        |  SMTP                   |
+        |_________________________|
 
 
 
@@ -572,3 +571,7 @@
         - DUTにストレスをかけてDUTの堅牢性を図る.(ex. DoS)
 
     現在はまだGroup2以降のEDSA認証規格が対応していないので、アップデートを待つ.
+
+
+
+
