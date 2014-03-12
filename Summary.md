@@ -3,12 +3,11 @@ ControlSystem
 <b> 第1部 - 制御システムについて</b>
 
   <b>1 - インシデント</b>
-    
+---------
     ・47%が意図的なマルウェアの攻撃
     ・SCADAや産業制御システムのウィルス感染は減っているものの、
        攻撃の巧妙化・ステルス化が進み検知が難しくなっている
   
----------
   <b>2 - Stuxnetの概要</b>
 
     class Stuxnet:
@@ -30,6 +29,7 @@ ControlSystem
           5. Windowsに詳しい、制御システムであるWinCC/Step7についても詳しい
 
     2 - Stuxnetが出た後の背景
+---------
 
       Stuxnet が出現するまでは、汎用製品や標準プロトコルで構成されている情報システム
       が制御システムのオープン化(汎用製品や標準プロトコルの 利用)が進展しており
@@ -52,9 +52,8 @@ ControlSystem
         ・外部との通信における接続先のフィルタリング 
         ・外部との接続点における通信の監視、制御機構
 
----------
   <b>3 - SCADA</b>
-
+---------
       2010 ~ 2016年で 46億ドル ~ 70億ドルにまでSCADA市場が成長する見込み。
       ゆえに、サイバセキュリティを強くする必要がある
 
@@ -80,8 +79,8 @@ ControlSystem
           • Keeping Access
           • Covering the Tracks
 
----------
   <b>4 - 制御システムの認証</b>
+----------
 
       認証-
         1.セキュリティ製品を開発してるベンダのプロセスを評価
@@ -118,12 +117,11 @@ ControlSystem
       直接SCADAに膨大なデータを送るのではなく、分析データを投げることで、
       早期に自体を把握できる
 
----------
-
 <strong>勉強会02<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a></strong>
 
   <b>goals:</b>
-      
+---------
+
       1.サイバーセキュリティと制御システムがどのような関係にあるかにおいて
           重要な論点を理解すること
       2.次のようなメソッドを学ぶ
@@ -135,8 +133,8 @@ ControlSystem
           4.アプリケーション
         - Apply contemporary security mitigation strategies to control systems
           (直訳:現代セキュリティミティゲーションを制御システムへ適応)
-------
   <b>agenda:</b>
+------
       
       1. SCADA&Controls system overview
       2. Risk to Control systems
@@ -145,9 +143,9 @@ ControlSystem
       5. SCADA Security "Chalk Talk"
       6. Defence,Detection,and Analysis
 
-------
   <b>SCADA&Controls system overview</b>
-          
+------
+
           I/O
         |---------------|
         | Meters        |
@@ -185,9 +183,9 @@ ControlSystem
         | DCS           | DCS – Distributed Control System
         | ______________|
 
-------
 
   <b>Sensors and Field Devices:</b>
+------
         
         1.Discrete Sensors
           - 開けるか閉じるかで状態を指摘する.
@@ -206,9 +204,9 @@ ControlSystem
               電気信号をデジタル化する必要がある.
               これをするには、RTUs/PLCs/IEDsのような装置を使う.
 
+  <b>The RTU(遠隔端末ユニット):</b>
 ------
 
-  <b>The RTU(遠隔端末ユニット):</b>
         
         - アナログ/個々の図りをデジタル情報に変換する
         - Contain analog and discrete inputs
@@ -219,9 +217,9 @@ ControlSystem
           - データの集中
           - プロトコルの通信
 
+  <b>The IED(高性能な電子デバイス):</b>
 ------
 
-  <b>The IED(高性能な電子デバイス):</b>
         
         - 近代のマイクロプロセッサが搭載されたコントローラ
 
@@ -239,9 +237,9 @@ ControlSystem
           - Pointでイベントは正確に記憶できる
           - コンフィグは遠隔で設定できる
       
+  <b>The PLC:</b>
 ------
 
-  <b>The PLC:</b>
         
         PLCsは中断機の代わり.
         リレー回路の代替装置として開発された制御装置である。 
@@ -261,9 +259,8 @@ ControlSystem
         (What is Universal Programming)
         6.ほとんどのPLCは最小限のセキュリティが備わっている
 
-------
-
   <b>THE HMI:</b>
+------
 
         人間と機械が情報をやり取りするための手段や、
         そのための装置やソフトウェアなどの総称。
@@ -277,9 +274,6 @@ ControlSystem
         ロジスティック情報、特定のセンサや機械の詳細図、
         エキスパートシステムによるトラブルシューティングなどが提供されてる
 
-
-
-
         1.コントロール,モニタリング,アラームするために使われる
         2.Can be software systems on a PC or 
           standalone systems like touch panels, 
@@ -287,9 +281,9 @@ ControlSystem
         3.(PLCs, IEDs,.etc)のようなデバイスやディスプレイからデータを集める.
           それをデータベースにデータを送る.
 
+  <b>DCS:</b>
 ------
 
-  <b>DCS:</b>
 
         1.分散制御システムは中央制御パネルを持っており、
           他の制御システムの集まりも含める.
@@ -310,10 +304,9 @@ ControlSystem
           - Industrial hardened equipment
             (直訳: 工業的図地金入り設備
 
+  <b>SCADA</b>
 ------
 
-  <b>SCADA</b>
-        
         1.産業制御システムの１つ。
         2.コンピュータによるシステム監視/プロセス制御が可能
         3.対象のプロセスは
@@ -325,8 +318,8 @@ ControlSystem
         反復モード/離散モードなどがある
 
   
-------
   <b>WHAT THE DIFFERENT SCADA WITH DCS!?</b>
+------
 
         – The key word in SCADA is “Supervisory.” This indicates that 
           decisions are not directly made by the system. Instead, the 
@@ -375,9 +368,9 @@ ControlSystem
           SCADAはそれらループの状態を監視する
 
 
--------
 
   <b>Dedicated Lines:</b>
+-------
 
         • More secure than leased lines
           
@@ -398,9 +391,9 @@ ControlSystem
         • Primary installations
         – May be Isolated systems – Serial communications
 
-------
 
   <b>Power Line Communications:</b>
+------
 
         – Superimposed analog signal over a 50 or 60 Hz AC 
           system – Used in the electrical sector for command and control
@@ -412,9 +405,9 @@ ControlSystem
         
         – Not used in rural settings
 
--------
 
   <b>Wired Media - Copper / Fiber</b>
+-------
 
         - IP/Ethernetとシリアルアプリの両方を使用
 
@@ -424,9 +417,9 @@ ControlSystem
 
         - 用意に情報を調べれる
   
--------
 
   <b>Wireless: Radios and WiFi</b>
+-------
 
         -Radio-
 
@@ -443,9 +436,9 @@ ControlSystem
           3.多数の認証技術が使われている
           4.多数の暗号技術が使われている
 
--------
 
   <b>Wireless</b>
+-------
       
         Microwave
           
@@ -461,9 +454,9 @@ ControlSystem
           1.存在する携帯電話用のネットワークを使う
           2.携帯を送信機のように生成している
 
--------
 
-  <b>Protocols & CRT試験</b>
+  <b>Protocols Lists</b>
+-------
 
         試験対象のプロトコル
 
@@ -533,6 +526,52 @@ ControlSystem
         |  61850          |
         |  SMTP           |
         |_________________|
+
+
+
+  <b>Protocolの概要</b>
+-------------
+
+
+  <b>Fuzzing Summary</b>
+-------------
+    
+    先述した通り、近年は「制御システムのオープン化」に傾向がある.
+
+    メリット:
+      
+      1.異なるベンダー間での制御伊システムの通信が可能
+        - システム構成の選択肢が増大
+      2.情報システムとの接続
+        - 情報の管理、リモート制御が可能
+
+    デメリット:
+
+      1.今までは独自のプロトコルを使っていたので,
+        攻撃の難易度は高かったが,
+        インターネットへの接続/汎用プロトコルの採用により,難易度の低下.
+
+
+    ゆえに,プロトコルファジングの必要性が出てくる.
+    EDSA認証適合ファジングツールの開発
+
+    DUTに対しCRT(Communication Robustness Testing)をする.
+
+    検査パターンの分類:
+
+      1.ベースラインオペレーション
+        - 対象プロトコルでの基本的な通信ができてることの確認(正常通信)
+
+      2.ロバストネス
+        - 不正な値をPDU(Protocol Data Unit)に設定し,DUTの堅牢性を検査
+        
+        - 不正な形式,矛盾,不正なサイズのPDUを送信.
+
+      3.ロードストレス
+        - DUTにストレスをかけてDUTの堅牢性を図る.(ex. DoS)
+
+    現在はまだGroup2以降のEDSA認証規格が対応していないので、アップデートを待つ.
+
 
 
 
