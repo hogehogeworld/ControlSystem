@@ -1,7 +1,5 @@
-ControlSystem
-=============
 <b> 第1部 - 制御システムについて</b>
----------
+===========
 
   1 - インシデント
 ---------
@@ -118,9 +116,10 @@ ControlSystem
       直接SCADAに膨大なデータを送るのではなく、分析データを投げることで、
       早期に自体を把握できる
 
-<strong>勉強会02<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a></strong>
+勉強会02<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a>
+======
 
-  <b>goals:</b>
+  <b>goals</b>
 ---------
 
       1.サイバーセキュリティと制御システムがどのような関係にあるかにおいて
@@ -134,7 +133,7 @@ ControlSystem
           4.アプリケーション
         - Apply contemporary security mitigation strategies to control systems
           (直訳:現代セキュリティミティゲーションを制御システムへ適応)
-  <b>agenda:</b>
+  <b>agenda</b>
 ------
       
       1. SCADA&Controls system overview
@@ -185,7 +184,7 @@ ControlSystem
         | ______________|
 
 
-  <b>Sensors and Field Devices:</b>
+  <b>Sensors and Field Devices</b>
 ------
         
         1.Discrete Sensors
@@ -205,7 +204,7 @@ ControlSystem
               電気信号をデジタル化する必要がある.
               これをするには、RTUs/PLCs/IEDsのような装置を使う.
 
-  <b>The RTU(遠隔端末ユニット):</b>
+  <b>The RTU(遠隔端末ユニット)</b>
 ------
 
         
@@ -218,7 +217,7 @@ ControlSystem
           - データの集中
           - プロトコルの通信
 
-  <b>The IED(高性能な電子デバイス):</b>
+  <b>The IED(高性能な電子デバイス)</b>
 ------
 
         
@@ -238,7 +237,7 @@ ControlSystem
           - Pointでイベントは正確に記憶できる
           - コンフィグは遠隔で設定できる
       
-  <b>The PLC:</b>
+  <b>The PLC</b>
 ------
 
         
@@ -260,7 +259,7 @@ ControlSystem
         (What is Universal Programming)
         6.ほとんどのPLCは最小限のセキュリティが備わっている
 
-  <b>THE HMI:</b>
+  <b>THE HMI</b>
 ------
 
         人間と機械が情報をやり取りするための手段や、
@@ -282,7 +281,7 @@ ControlSystem
         3.(PLCs, IEDs,.etc)のようなデバイスやディスプレイからデータを集める.
           それをデータベースにデータを送る.
 
-  <b>DCS:</b>
+  <b>DCS</b>
 ------
 
 
@@ -572,7 +571,3 @@ ControlSystem
         - DUTにストレスをかけてDUTの堅牢性を図る.(ex. DoS)
 
     現在はまだGroup2以降のEDSA認証規格が対応していないので、アップデートを待つ.
-
-
-
-
