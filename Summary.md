@@ -1,6 +1,7 @@
 ControlSystem
 =============
 <b> 第1部 - 制御システムについて</b>
+---------
 
   1 - インシデント
 ---------
@@ -369,7 +370,7 @@ ControlSystem
 
 
 
-  <b>Dedicated Lines:</b>
+  <b>Dedicated Lines</b>
 -------
 
         • More secure than leased lines
@@ -392,7 +393,7 @@ ControlSystem
         – May be Isolated systems – Serial communications
 
 
-  <b>Power Line Communications:</b>
+  <b>Power Line Communications</b>
 ------
 
         – Superimposed analog signal over a 50 or 60 Hz AC 
@@ -571,5 +572,7 @@ ControlSystem
         - DUTにストレスをかけてDUTの堅牢性を図る.(ex. DoS)
 
     現在はまだGroup2以降のEDSA認証規格が対応していないので、アップデートを待つ.
+
+
 
 
