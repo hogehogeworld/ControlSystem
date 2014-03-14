@@ -116,10 +116,10 @@
       直接SCADAに膨大なデータを送るのではなく、分析データを投げることで、
       早期に自体を把握できる
 
-勉強会02<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">(Hands-on Control System Cyber Security Training)</a>
+<a href="http://www.inl.gov/scada/training/advanced_scada.shtml">Control System Cyber Security Training</a>
 ======
 
-  <b>goals</b>
+  <b>Goals</b>
 ---------
 
       1.サイバーセキュリティと制御システムがどのような関係にあるかにおいて
@@ -133,7 +133,7 @@
           4.アプリケーション
         - Apply contemporary security mitigation strategies to control systems
           (直訳:現代セキュリティミティゲーションを制御システムへ適応)
-  <b>agenda</b>
+  <b>Agenda</b>
 ------
       
       1. SCADA&Controls system overview
@@ -391,6 +391,19 @@
         • Primary installations
         – May be Isolated systems – Serial communications
 
+  <b>SCADA/EMS</b>
+------
+        現在、節電が強く呼びかけられている中、電力を抑えることが重要に
+        なっている.ピーク電力を抑えることを「電力ピークカット」と呼ぶ.
+
+        そして、その省エネを実現するには,
+        「現状のエネルギー使用状況をデータとしてログをとっておき、
+          無駄な電気を使っていないか、ピークカットの余地があるか否か
+          分析する」必要があります。
+        そこで必要なのが、EMSの使用料グラフ機能で、それを利用し電力量を
+        代表とした各種エネルギーの使用状況と推移が時系列で把握できることにより、
+        省エネの現実的な材料となる。
+
 
   <b>Power Line Communications</b>
 ------
@@ -505,13 +518,12 @@
         |  FFHSE4                 |
         |  Selected               |
         |  wireless               |
-        |  protocols/             |
-        |        stacks           |
+        |  protocols/stacks       |
         |  with elements          |
         |  such as:               |
-        |    -IEEE 802.11         |
-        |    -ISA100.11a          |
-        |    -WirelessHART        |
+        |       -IEEE 802.11      |
+        |       -ISA100.11a       |
+        |       -WirelessHART     |
         |_________________________|
 
 
@@ -527,10 +539,177 @@
         |  SMTP                   |
         |_________________________|
 
+        Other:
 
+        |-------------------------|
+        |  ANSI X3.28             |
+        |  BBC 7200               |
+        |  CDC Types1 and 2       |
+        |  DCP 1                  |
+        |  GEDAC 7020             |
+        |  ICCP                   |
+        |  Landis & Gyr 8979      |
+        |  OPC                    |
+        |  ControlNet             |
+        |  DeviceNet              |
+        |  DH+                    |
+        |  ProfiBus               |
+        |  Tejas 3 and 5          |
+        |  TRW 9550               |
+        |  UCA                    |
+        |_________________________|
 
   <b>Protocolの概要</b>
 -------------
+
+    有名な制御システムで使われているのが上記したプロトコル.
+
+    DNP3.0:
+
+      Distributed Network protocol(DNP)3.0は
+      電機工業品のためのSCADAによるデザインがされている.
+      - HMI/SCADA~RTU間で利用される通信プロトコル
+      - 電力と水道業界で専ら利用されている
+      - 米国で広く使われている
+      - マスタ/アウトステーション方式で
+        - マスタが通信の起点
+        - アウトステーションが,マスタから要求された
+          機能を実装し応答メッセージを返す
+      - send request
+      - accept response
+      - confirmation, time-outs, error recovery
+      
+      のような機能がある
+
+      SCADA/EMS アプリケーション
+
+        - RTU to IED communications
+            
+        - Master to remote communications
+
+      DNP3.0はシリアル回線からも攻撃されることがある
+
+      PLC/RTU側だけでなくHMI/SCADA側の脆弱性も探索
+      
+      DNP3.0に脆弱性あることで
+        - センター側の方が末端側より攻撃の打撃が広範囲に及ぶ
+            - 末端が広域に分散しているシステムにおいて
+              物理的な防御が困難
+            - 遠隔の端末の位置からセンター側を攻撃できる可能性
+      
+         Master
+      |-------------------------------------|
+      |  User Layer                         |
+      |  DNP3 Application Layer             |
+      |  Ransport Function                  |
+      |  DNP3 Data Link Layer               |
+      | ___________________________________ |
+                      |
+                      |Phsical Media
+         Outstation   |
+      |-------------------------------------|
+      |  User Layer                         |
+      |  DNP3 Application Layer             |
+      |  Ransport Function                  |
+      |  DNP3 Data Link Layer               |
+      | ___________________________________ |
+
+      User LayerはDNP3.0を使用するユーザのソフトウェアを指す
+      DNP3.0 Application LayerからDNP3.0 Data Link Layerまでは
+        DNP3が規定するレイヤとなる.
+      Physical Mediaがシリアル通信であれば、RS-232やRS-485、
+      IPネットワーキングならEthernetとなる
+     
+      1.メッセージ
+        メッセージは、レイヤごとにわかれている.
+      |--------------------------------------------------------------------------
+      |   Name                      |     Summary                               | 
+      |--------------------------------------------------------------------------
+      | Application Request Header  |Application Control および                 |
+      |                             |  Function Codeが格納されてる              |
+      ---------------------------------------------------------------------------
+      | Application Response Header | Application Control、Function Code        |
+      |                             |  およびInternal Indicationsが格納される   |
+      ---------------------------------------------------------------------------
+      | Application Control         |通信制御用ビットが格納されている           |
+      ---------------------------------------------------------------------------
+      | Function Code               |readなどのファンクションコードが格納される |
+      ---------------------------------------------------------------------------
+      | Internal Indications        |レスポンス時のみある領域.                  |
+      |                             | アウトステーションのステータスや          |
+      |                             |   エラー状態をチェックする領域である      |
+      ---------------------------------------------------------------------------
+      | Object Header               |DNPオブジェクトのヘッダになる              |
+      ---------------------------------------------------------------------------
+      | Group                       |DNPオブジェクトのグループ番号になる        |
+      |                             | 使用するDNPの機能に応じた番号を指定       |
+      ---------------------------------------------------------------------------
+      | Variation                   |DNPオブジェクトのデータフォーマット        |
+      |                             | を指定する番号となる                      |
+      |                             |Group毎にVariation番号が規定してあるので、 |
+      |                             | 使用するフォーマットに応じ番号を指定する  |
+      ---------------------------------------------------------------------------
+      | Qualifier Field/Range       |FieldにはQualifier Codeが格納されており、  |
+      |   Field Qualifier           |  これは例えばreadの時、範囲を指定するのか |
+      |                             |   readサイズを指定するのか、              |
+      |                             |     全データを取得するのかなどを指定するもの
+      |                             |Range Fieldにはパラメータ(開始インデックス |
+      |                             | 終了インデックスやサイズなど)が格納される |
+      |_________________________________________________________________________|
+
+      
+      2.Function Code
+        DNP3.0プロトコルにはたくさんのFunction codeが定義されてる
+        次のものが最も使われる.
+      |--------------------------------------------------------------------------
+      | Code  | Name                |     Summary                               | 
+      |--------------------------------------------------------------------------
+      | 0x01  | READ                |指定したデータを取得する                   |
+      ---------------------------------------------------------------------------
+      | 0x03  | SELECT              | 書き込むデータの選択を行う.               |
+      |       |                     |  この段階では書き込みが行われず,          |
+      |       |                     | OPERATEコマンドを発行することにより       |
+      |       |                     | データが書き込まれる                      |
+      ---------------------------------------------------------------------------
+      | 0x04  | OPERATE             | SELECTしたデータに書き込みを行う          |
+      |       |                     | SELECT & OPERATEをすることにより,         |
+      |       |                     |  データを確実に書き込むことができる       |
+      ---------------------------------------------------------------------------
+      | 0x05  | DIRECT_OPERATE      | SELECTを行わなくてもデータの書き込みを    |
+      |       |                     |  行えるファンクション                     |
+      ---------------------------------------------------------------------------
+
+      3.Group
+        DNP3.0のGroupについて,各GroupはVariationやFunction Codeによって動作が変わる
+      |--------------------------------------------------------------------------
+      | Group | Name                |     Summary                               | 
+      |--------------------------------------------------------------------------
+      |  1    | Binary Input        |Binary Input データの制御(Read .etc)       |
+      ---------------------------------------------------------------------------
+      |  2    | Binary Input Event  |Binary Input イベントデータの制御(Read .etc|
+      ---------------------------------------------------------------------------
+      |  10   | Binary Output Status|Binary Output データの制御(Read .etc)      |
+      ---------------------------------------------------------------------------
+      |  11   | Binary Output Event |Binary Output イベントデータ制御(Read .etc)|
+      ---------------------------------------------------------------------------
+      |  12   | Binary Output Commd |Binary Output                              | 
+      |       |                     |           データ制御(SELECT/OPERATE)      |
+      ---------------------------------------------------------------------------
+      |  30   | Analog Input        |Analog Input データの制御(Read .etc)       |
+      ---------------------------------------------------------------------------
+      |  32   | Analog Input Event  |Analog Input イベントデータの制御(Read)    |
+      ---------------------------------------------------------------------------
+      |  40   | Analog Output Event |Analog Output データの制御(Read)           |
+      ---------------------------------------------------------------------------
+      |  41   | Analog Output Commd |Analog Output データの制御(SELECT/OPERATE) |
+      ---------------------------------------------------------------------------
+      |  42   | Analog Output Event |Analog Output イベントデータの制御(Read)   |
+      ---------------------------------------------------------------------------
+ 
+      会社側がアウトステーション担当で、LinuxOSにDNP3.0を実装した
+
+      - Analog Input - 32bit without flag (Group 30 Variation3)
+      - Analog Output Command - 32bit (Group41 Variation1)
 
 
   <b>Fuzzing Summary</b>
@@ -573,5 +752,44 @@
     現在はまだGroup2以降のEDSA認証規格が対応していないので、アップデートを待つ.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reference
+-----
+
+
+http://en.wikipedia.org/wiki/Energy_management_system
+http://www.roboticsware.co.jp/ems/ems.htm
+http://www.hartcomm.org/protocol/about/aboutprotocol_what.html- 
+http://jp.hartcomm.org/protocol/about/aboutprotocol_what.html
 
 
